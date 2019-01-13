@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: shared
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: mint
+Implementation-Vendor-Id: com.canada.calgary.provision
+Build-Jdk: 1.8.0_172
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/cartracker/shared
+Created-By: Maven Integration for Eclipse
+

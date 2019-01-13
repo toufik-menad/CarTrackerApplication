@@ -1,0 +1,780 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 120586240 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=14606, tid=0x00007fb823dfd700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_172-b11) (build 1.8.0_172-b11)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.172-b11 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fb83c080800):  VMThread [stack: 0x00007fb823cfd000,0x00007fb823dfe000] [id=14618]
+
+Stack: [0x00007fb823cfd000,0x00007fb823dfe000],  sp=0x00007fb823dfc1a0,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xad221a]  VMError::report_and_die()+0x2ba
+V  [libjvm.so+0x50185b]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8b
+V  [libjvm.so+0x92fee3]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x123
+V  [libjvm.so+0x930109]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x9273ca]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x99d363]  PSVirtualSpace::expand_by(unsigned long)+0x53
+V  [libjvm.so+0x99e768]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xf8
+V  [libjvm.so+0x99d8c2]  PSYoungGen::resize(unsigned long, unsigned long)+0x22
+V  [libjvm.so+0x99ab9b]  PSScavenge::invoke_no_policy()+0xf3b
+V  [libjvm.so+0x99b321]  PSScavenge::invoke()+0x41
+V  [libjvm.so+0x951df0]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x70
+V  [libjvm.so+0xad3c97]  VM_ParallelGCFailedAllocation::doit()+0x97
+V  [libjvm.so+0xadb7b5]  VM_Operation::evaluate()+0x55
+V  [libjvm.so+0xad9b7a]  VMThread::evaluate_operation(VM_Operation*)+0xba
+V  [libjvm.so+0xad9efe]  VMThread::loop()+0x1ce
+V  [libjvm.so+0xada370]  VMThread::run()+0x70
+V  [libjvm.so+0x930248]  java_start(Thread*)+0x108
+
+VM_Operation (0x00007fb844b16a20): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fb83c010800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fb83c0d1000 JavaThread "Service Thread" daemon [_thread_blocked, id=14626, stack(0x00007fb82331e000,0x00007fb82341f000)]
+  0x00007fb83c0c6000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=14625, stack(0x00007fb82341f000,0x00007fb823520000)]
+  0x00007fb83c0c4800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=14624, stack(0x00007fb823520000,0x00007fb823621000)]
+  0x00007fb83c0c1800 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=14623, stack(0x00007fb823621000,0x00007fb823722000)]
+  0x00007fb83c0c0000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=14622, stack(0x00007fb823722000,0x00007fb823823000)]
+  0x00007fb83c08c800 JavaThread "Finalizer" daemon [_thread_blocked, id=14620, stack(0x00007fb823afb000,0x00007fb823bfc000)]
+  0x00007fb83c08a000 JavaThread "Reference Handler" daemon [_thread_blocked, id=14619, stack(0x00007fb823bfc000,0x00007fb823cfd000)]
+  0x00007fb83c010800 JavaThread "main" [_thread_blocked, id=14612, stack(0x00007fb844a18000,0x00007fb844b19000)]
+
+Other Threads:
+=>0x00007fb83c080800 VMThread [stack: 0x00007fb823cfd000,0x00007fb823dfe000] [id=14618]
+  0x00007fb83c0d6000 WatcherThread [stack: 0x00007fb82321d000,0x00007fb82331e000] [id=14627]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fb83c00c920] Threads_lock - owner thread: 0x00007fb83c080800
+[0x00007fb83c00ce20] Heap_lock - owner thread: 0x00007fb83c010800
+
+Heap:
+ PSYoungGen      total 134144K, used 9188K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 124928K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000df100000)
+  from space 9216K, 99% used [0x00000000df100000,0x00000000df9f9150,0x00000000dfa00000)
+  to   space 9216K, 0% used [0x00000000dfa00000,0x00000000dfa00000,0x00000000e0300000)
+ ParOldGen       total 45568K, used 15008K [0x0000000086400000, 0x0000000089080000, 0x00000000d7700000)
+  object space 45568K, 32% used [0x0000000086400000,0x00000000872a83a8,0x0000000089080000)
+ Metaspace       used 23541K, capacity 24220K, committed 24448K, reserved 1071104K
+  class space    used 2994K, capacity 3167K, committed 3200K, reserved 1048576K
+
+Card table byte_map: [0x00007fb8413d9000,0x00007fb8417a8000] byte_map_base: 0x00007fb840fa7000
+
+Marking Bits: (ParMarkBitMap*) 0x00007fb843ee3de0
+ Begin Bits: [0x00007fb829320000, 0x00007fb82b190000)
+ End Bits:   [0x00007fb82b190000, 0x00007fb82d000000)
+
+Polling page: 0x00007fb844b34000
+
+CodeCache: size=245760Kb used=7581Kb max_used=7581Kb free=238178Kb
+ bounds [0x00007fb82d000000, 0x00007fb82d770000, 0x00007fb83c000000]
+ total_blobs=2510 nmethods=2129 adapters=294
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 2.176 Thread 0x00007fb83c0c6000 nmethod 2139 0x00007fb82d767a10 code [0x00007fb82d767be0, 0x00007fb82d768138]
+Event: 2.177 Thread 0x00007fb83c0c6000 2138       3       org.springframework.context.annotation.ConfigurationClassParser$SourceClass::<init> (54 bytes)
+Event: 2.178 Thread 0x00007fb83c0c6000 nmethod 2138 0x00007fb82d7683d0 code [0x00007fb82d768600, 0x00007fb82d7692d8]
+Event: 2.178 Thread 0x00007fb83c0c6000 2141       3       org.springframework.util.CollectionUtils::isEmpty (19 bytes)
+Event: 2.178 Thread 0x00007fb83c0c6000 nmethod 2141 0x00007fb82d769990 code [0x00007fb82d769b00, 0x00007fb82d769d88]
+Event: 2.178 Thread 0x00007fb83c0c6000 2140       3       java.io.UnixFileSystem::isAbsolute (13 bytes)
+Event: 2.178 Thread 0x00007fb83c0c6000 nmethod 2140 0x00007fb82d769e50 code [0x00007fb82d769fc0, 0x00007fb82d76a190]
+Event: 2.178 Thread 0x00007fb83c0c6000 2142       3       sun.reflect.annotation.AnnotationParser::parseArray (226 bytes)
+Event: 2.180 Thread 0x00007fb83c0c6000 nmethod 2142 0x00007fb82d76a250 code [0x00007fb82d76a4e0, 0x00007fb82d76b0f8]
+Event: 2.180 Thread 0x00007fb83c0c6000 2143       3       org.springframework.asm.ClassReader::readMethod (1130 bytes)
+
+GC Heap History (10 events):
+Event: 0.862 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 36352K, used 4685K [0x00000000d7700000, 0x00000000dbe00000, 0x0000000100000000)
+  eden space 31232K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000d9580000)
+  from space 5120K, 91% used [0x00000000d9580000,0x00000000d9a13620,0x00000000d9a80000)
+  to   space 5120K, 0% used [0x00000000db900000,0x00000000db900000,0x00000000dbe00000)
+ ParOldGen       total 83456K, used 63K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 0% used [0x0000000086400000,0x000000008640fe18,0x000000008b580000)
+ Metaspace       used 13405K, capacity 13878K, committed 13952K, reserved 1060864K
+  class space    used 1759K, capacity 1912K, committed 1920K, reserved 1048576K
+}
+Event: 0.989 GC heap before
+{Heap before GC invocations=4 (full 0):
+ PSYoungGen      total 36352K, used 35917K [0x00000000d7700000, 0x00000000dbe00000, 0x0000000100000000)
+  eden space 31232K, 100% used [0x00000000d7700000,0x00000000d9580000,0x00000000d9580000)
+  from space 5120K, 91% used [0x00000000d9580000,0x00000000d9a13620,0x00000000d9a80000)
+  to   space 5120K, 0% used [0x00000000db900000,0x00000000db900000,0x00000000dbe00000)
+ ParOldGen       total 83456K, used 63K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 0% used [0x0000000086400000,0x000000008640fe18,0x000000008b580000)
+ Metaspace       used 16135K, capacity 16618K, committed 16896K, reserved 1064960K
+  class space    used 2092K, capacity 2224K, committed 2304K, reserved 1048576K
+Event: 0.998 GC heap after
+Heap after GC invocations=4 (full 0):
+ PSYoungGen      total 67584K, used 5114K [0x00000000d7700000, 0x00000000dbe00000, 0x0000000100000000)
+  eden space 62464K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000db400000)
+  from space 5120K, 99% used [0x00000000db900000,0x00000000dbdfe810,0x00000000dbe00000)
+  to   space 5120K, 0% used [0x00000000db400000,0x00000000db400000,0x00000000db900000)
+ ParOldGen       total 83456K, used 1082K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 1% used [0x0000000086400000,0x000000008650eb30,0x000000008b580000)
+ Metaspace       used 16135K, capacity 16618K, committed 16896K, reserved 1064960K
+  class space    used 2092K, capacity 2224K, committed 2304K, reserved 1048576K
+}
+Event: 1.286 GC heap before
+{Heap before GC invocations=5 (full 0):
+ PSYoungGen      total 67584K, used 67578K [0x00000000d7700000, 0x00000000dbe00000, 0x0000000100000000)
+  eden space 62464K, 100% used [0x00000000d7700000,0x00000000db400000,0x00000000db400000)
+  from space 5120K, 99% used [0x00000000db900000,0x00000000dbdfe810,0x00000000dbe00000)
+  to   space 5120K, 0% used [0x00000000db400000,0x00000000db400000,0x00000000db900000)
+ ParOldGen       total 83456K, used 1082K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 1% used [0x0000000086400000,0x000000008650eb30,0x000000008b580000)
+ Metaspace       used 20563K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2643K, capacity 2809K, committed 2816K, reserved 1048576K
+Event: 1.299 GC heap after
+Heap after GC invocations=5 (full 0):
+ PSYoungGen      total 67584K, used 5111K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 62464K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000db400000)
+  from space 5120K, 99% used [0x00000000db400000,0x00000000db8fdf48,0x00000000db900000)
+  to   space 9216K, 0% used [0x00000000dfa00000,0x00000000dfa00000,0x00000000e0300000)
+ ParOldGen       total 83456K, used 5646K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 6% used [0x0000000086400000,0x0000000086983b08,0x000000008b580000)
+ Metaspace       used 20563K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2643K, capacity 2809K, committed 2816K, reserved 1048576K
+}
+Event: 1.304 GC heap before
+{Heap before GC invocations=6 (full 0):
+ PSYoungGen      total 67584K, used 6460K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 62464K, 2% used [0x00000000d7700000,0x00000000d7851480,0x00000000db400000)
+  from space 5120K, 99% used [0x00000000db400000,0x00000000db8fdf48,0x00000000db900000)
+  to   space 9216K, 0% used [0x00000000dfa00000,0x00000000dfa00000,0x00000000e0300000)
+ ParOldGen       total 83456K, used 5646K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 6% used [0x0000000086400000,0x0000000086983b08,0x000000008b580000)
+ Metaspace       used 20628K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2654K, capacity 2809K, committed 2816K, reserved 1048576K
+Event: 1.320 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 134144K, used 5200K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 124928K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000df100000)
+  from space 9216K, 56% used [0x00000000dfa00000,0x00000000dff14030,0x00000000e0300000)
+  to   space 9216K, 0% used [0x00000000df100000,0x00000000df100000,0x00000000dfa00000)
+ ParOldGen       total 83456K, used 5654K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 6% used [0x0000000086400000,0x0000000086985b08,0x000000008b580000)
+ Metaspace       used 20628K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2654K, capacity 2809K, committed 2816K, reserved 1048576K
+}
+Event: 1.320 GC heap before
+{Heap before GC invocations=7 (full 1):
+ PSYoungGen      total 134144K, used 5200K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 124928K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000df100000)
+  from space 9216K, 56% used [0x00000000dfa00000,0x00000000dff14030,0x00000000e0300000)
+  to   space 9216K, 0% used [0x00000000df100000,0x00000000df100000,0x00000000dfa00000)
+ ParOldGen       total 83456K, used 5654K [0x0000000086400000, 0x000000008b580000, 0x00000000d7700000)
+  object space 83456K, 6% used [0x0000000086400000,0x0000000086985b08,0x000000008b580000)
+ Metaspace       used 20628K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2654K, capacity 2809K, committed 2816K, reserved 1048576K
+Event: 1.361 GC heap after
+Heap after GC invocations=7 (full 1):
+ PSYoungGen      total 134144K, used 0K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 124928K, 0% used [0x00000000d7700000,0x00000000d7700000,0x00000000df100000)
+  from space 9216K, 0% used [0x00000000dfa00000,0x00000000dfa00000,0x00000000e0300000)
+  to   space 9216K, 0% used [0x00000000df100000,0x00000000df100000,0x00000000dfa00000)
+ ParOldGen       total 45568K, used 6378K [0x0000000086400000, 0x0000000089080000, 0x00000000d7700000)
+  object space 45568K, 13% used [0x0000000086400000,0x0000000086a3aa68,0x0000000089080000)
+ Metaspace       used 20628K, capacity 21112K, committed 21248K, reserved 1067008K
+  class space    used 2654K, capacity 2809K, committed 2816K, reserved 1048576K
+}
+Event: 2.186 GC heap before
+{Heap before GC invocations=8 (full 1):
+ PSYoungGen      total 134144K, used 124928K [0x00000000d7700000, 0x00000000e0300000, 0x0000000100000000)
+  eden space 124928K, 100% used [0x00000000d7700000,0x00000000df100000,0x00000000df100000)
+  from space 9216K, 0% used [0x00000000dfa00000,0x00000000dfa00000,0x00000000e0300000)
+  to   space 9216K, 0% used [0x00000000df100000,0x00000000df100000,0x00000000dfa00000)
+ ParOldGen       total 45568K, used 6378K [0x0000000086400000, 0x0000000089080000, 0x00000000d7700000)
+  object space 45568K, 13% used [0x0000000086400000,0x0000000086a3aa68,0x0000000089080000)
+ Metaspace       used 23541K, capacity 24220K, committed 24448K, reserved 1071104K
+  class space    used 2994K, capacity 3167K, committed 3200K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 1.684 Thread 0x00007fb83c010800 Uncommon trap: reason=range_check action=make_not_entrant pc=0x00007fb82d6758a4 method=org.springframework.asm.Type.getType([CI)Lorg/springframework/asm/Type; @ 162
+Event: 1.691 Thread 0x00007fb83c010800 Uncommon trap: reason=range_check action=make_not_entrant pc=0x00007fb82d67c254 method=org.springframework.asm.Type.getType([CI)Lorg/springframework/asm/Type; @ 162
+Event: 1.778 Thread 0x00007fb83c010800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb82d682c60 method=org.springframework.asm.Type.getType([CI)Lorg/springframework/asm/Type; @ 165
+Event: 1.874 Thread 0x00007fb83c010800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb82d685750 method=org.springframework.asm.Type.getType([CI)Lorg/springframework/asm/Type; @ 165
+Event: 1.893 Thread 0x00007fb83c010800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb82d6b3de4 method=org.springframework.asm.ClassReader.readCode(Lorg/springframework/asm/MethodVisitor;Lorg/springframework/asm/Context;I)V @ 821
+Event: 2.043 Thread 0x00007fb83c9e5000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb82d4eb2ac method=org.springframework.util.CollectionUtils.isEmpty(Ljava/util/Collection;)Z @ 5
+Event: 2.051 Thread 0x00007fb83c9e5000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb82d4eb2ac method=org.springframework.util.CollectionUtils.isEmpty(Ljava/util/Collection;)Z @ 5
+Event: 2.053 Thread 0x00007fb83c9e5000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb82d4eb2ac method=org.springframework.util.CollectionUtils.isEmpty(Ljava/util/Collection;)Z @ 5
+Event: 2.054 Thread 0x00007fb83c9e5000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb82d4eb2ac method=org.springframework.util.CollectionUtils.isEmpty(Ljava/util/Collection;)Z @ 5
+Event: 2.166 Thread 0x00007fb83c010800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb82d73ded0 method=org.springframework.asm.ClassReader.readMethod(Lorg/springframework/asm/ClassVisitor;Lorg/springframework/asm/Context;I)I @ 686
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.714 Thread 0x00007fb83c010800 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$chars$0()Ljava/util/Spliterator$OfInt;> (0x00000000d8e12330) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/interpreter/linkResolver.cpp, line 620]
+Event: 0.926 Thread 0x00007fb83c010800 Exception <a 'java/lang/NoSuchMethodError': org.slf4j.impl.StaticMDCBinder.getSingleton()Lorg/slf4j/impl/StaticMDCBinder;> (0x00000000d87ebf10) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/interpreter/linkResolver
+Event: 1.065 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': java/lang/ObjectCustomizer> (0x00000000d844fa90) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 210]
+Event: 1.068 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/annotation/ConfigurationClassPostProcessorCustomizer> (0x00000000d85faac8) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/system
+Event: 1.072 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/beans/factory/support/BeanDefinitionRegistryPostProcessorCustomizer> (0x00000000d8677b98) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile
+Event: 1.073 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/core/PriorityOrderedCustomizer> (0x00000000d8754ce0) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 210]
+Event: 1.074 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/ResourceLoaderAwareCustomizer> (0x00000000d8778720) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 21
+Event: 1.074 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/beans/factory/BeanClassLoaderAwareCustomizer> (0x00000000d87a0880) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/systemDictionary.cpp, 
+Event: 1.075 Thread 0x00007fb83c010800 Exception <a 'java/lang/ClassNotFoundException': org/springframework/context/EnvironmentAwareCustomizer> (0x00000000d87c3f48) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 210]
+Event: 1.177 Thread 0x00007fb83c743000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x00000000da562838) thrown at [/HUDSON/workspace/8-2-build-linux-amd64/jdk8u172/10810/hotspot/src/share/vm/interpreter/linkResolver.cpp, line
+
+Events (10 events):
+Event: 2.171 loading class org/apache/catalina/startup/Tomcat done
+Event: 2.173 loading class org/apache/tomcat/websocket/server/WsSci
+Event: 2.173 loading class org/apache/tomcat/websocket/server/WsSci done
+Event: 2.173 loading class javax/servlet/ServletContainerInitializer
+Event: 2.173 loading class javax/servlet/ServletContainerInitializer done
+Event: 2.184 loading class org/springframework/boot/context/properties/EnableConfigurationPropertiesImportSelector$ConfigurationPropertiesBeanRegistrar
+Event: 2.184 loading class org/springframework/boot/context/properties/EnableConfigurationPropertiesImportSelector$ConfigurationPropertiesBeanRegistrar done
+Event: 2.185 loading class org/springframework/boot/context/properties/ConfigurationPropertiesBindingPostProcessorRegistrar
+Event: 2.185 loading class org/springframework/boot/context/properties/ConfigurationPropertiesBindingPostProcessorRegistrar done
+Event: 2.186 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 594312                             /opt/java/jdk1.8.0_172/bin/java
+00600000-00601000 rw-p 00000000 08:01 594312                             /opt/java/jdk1.8.0_172/bin/java
+008eb000-0090c000 rw-p 00000000 00:00 0                                  [heap]
+86400000-89080000 rw-p 00000000 00:00 0 
+89080000-d7700000 ---p 00000000 00:00 0 
+d7700000-e0300000 rw-p 00000000 00:00 0 
+e7600000-100000000 ---p 00000000 00:00 0 
+100000000-100320000 rw-p 00000000 00:00 0 
+100320000-140000000 ---p 00000000 00:00 0 
+7fb7dc000000-7fb7dc455000 rw-p 00000000 00:00 0 
+7fb7dc455000-7fb7e0000000 ---p 00000000 00:00 0 
+7fb7e4000000-7fb7e4021000 rw-p 00000000 00:00 0 
+7fb7e4021000-7fb7e8000000 ---p 00000000 00:00 0 
+7fb7e8000000-7fb7e8021000 rw-p 00000000 00:00 0 
+7fb7e8021000-7fb7ec000000 ---p 00000000 00:00 0 
+7fb7ec000000-7fb7ecea8000 rw-p 00000000 00:00 0 
+7fb7ecea8000-7fb7f0000000 ---p 00000000 00:00 0 
+7fb7f0000000-7fb7f07fd000 rw-p 00000000 00:00 0 
+7fb7f07fd000-7fb7f4000000 ---p 00000000 00:00 0 
+7fb7f4000000-7fb7f4021000 rw-p 00000000 00:00 0 
+7fb7f4021000-7fb7f8000000 ---p 00000000 00:00 0 
+7fb7f8000000-7fb7f895c000 rw-p 00000000 00:00 0 
+7fb7f895c000-7fb7fc000000 ---p 00000000 00:00 0 
+7fb7fc000000-7fb7fc021000 rw-p 00000000 00:00 0 
+7fb7fc021000-7fb800000000 ---p 00000000 00:00 0 
+7fb800000000-7fb800021000 rw-p 00000000 00:00 0 
+7fb800021000-7fb804000000 ---p 00000000 00:00 0 
+7fb804000000-7fb804021000 rw-p 00000000 00:00 0 
+7fb804021000-7fb808000000 ---p 00000000 00:00 0 
+7fb808000000-7fb8082bb000 rw-p 00000000 00:00 0 
+7fb8082bb000-7fb80c000000 ---p 00000000 00:00 0 
+7fb80c000000-7fb80c021000 rw-p 00000000 00:00 0 
+7fb80c021000-7fb810000000 ---p 00000000 00:00 0 
+7fb814000000-7fb814021000 rw-p 00000000 00:00 0 
+7fb814021000-7fb818000000 ---p 00000000 00:00 0 
+7fb818fff000-7fb81c000000 rw-p 00000000 00:00 0 
+7fb81c000000-7fb81c021000 rw-p 00000000 00:00 0 
+7fb81c021000-7fb820000000 ---p 00000000 00:00 0 
+7fb8218ea000-7fb8219aa000 rw-p 00000000 00:00 0 
+7fb8219aa000-7fb821aea000 ---p 00000000 00:00 0 
+7fb821aea000-7fb821afb000 r-xp 00000000 08:01 595868                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnio.so
+7fb821afb000-7fb821cfa000 ---p 00011000 08:01 595868                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnio.so
+7fb821cfa000-7fb821cfb000 rw-p 00010000 08:01 595868                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnio.so
+7fb821cfb000-7fb821efb000 rw-p 00000000 00:00 0 
+7fb821efb000-7fb8220fb000 rw-p 00000000 00:00 0 
+7fb8220fb000-7fb8222fb000 rw-p 00000000 00:00 0 
+7fb8222fb000-7fb8224fb000 rw-p 00000000 00:00 0 
+7fb8224fb000-7fb822511000 r-xp 00000000 08:01 595865                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnet.so
+7fb822511000-7fb822711000 ---p 00016000 08:01 595865                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnet.so
+7fb822711000-7fb822712000 rw-p 00016000 08:01 595865                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libnet.so
+7fb822712000-7fb82271b000 r-xp 00000000 08:01 595873                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libmanagement.so
+7fb82271b000-7fb82291a000 ---p 00009000 08:01 595873                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libmanagement.so
+7fb82291a000-7fb82291b000 rw-p 00008000 08:01 595873                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libmanagement.so
+7fb82291b000-7fb822b1b000 rw-p 00000000 00:00 0 
+7fb822b1b000-7fb822bb1000 r--s 0110d000 08:01 595747                     /opt/java/jdk1.8.0_172/jre/lib/ext/jfxrt.jar
+7fb822bb1000-7fb822db1000 rw-p 00000000 00:00 0 
+7fb822db1000-7fb822db4000 ---p 00000000 00:00 0 
+7fb822db4000-7fb822eb2000 rw-p 00000000 00:00 0 
+7fb822eb2000-7fb822ecc000 r--s 0011b000 08:01 2758138                    /home/mint/.m2/repository/org/springframework/spring-web/5.0.10.RELEASE/spring-web-5.0.10.RELEASE.jar
+7fb822ecc000-7fb822edb000 r--s 000b3000 08:01 2758135                    /home/mint/.m2/repository/org/springframework/spring-webmvc/5.0.10.RELEASE/spring-webmvc-5.0.10.RELEASE.jar
+7fb822edb000-7fb822ee4000 r--s 000ed000 08:01 2758133                    /home/mint/.m2/repository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar
+7fb822ee4000-7fb822ee9000 r--s 00022000 08:01 2624805                    /home/mint/.m2/repository/org/xmlunit/xmlunit-core/2.5.1/xmlunit-core-2.5.1.jar
+7fb822ee9000-7fb822ef7000 r--s 00087000 08:01 2758129                    /home/mint/.m2/repository/org/springframework/spring-test/5.0.10.RELEASE/spring-test-5.0.10.RELEASE.jar
+7fb822ef7000-7fb822ef8000 r--s 00004000 08:01 1968976                    /home/mint/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar
+7fb822ef8000-7fb822efa000 r--s 00006000 08:01 1968974                    /home/mint/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar
+7fb822efa000-7fb822efb000 r--s 0000c000 08:01 1968971                    /home/mint/.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar
+7fb822efb000-7fb822efd000 r--s 00009000 08:01 1968969                    /home/mint/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+7fb822efd000-7fb822eff000 r--s 0000c000 08:01 1968959                    /home/mint/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+7fb822eff000-7fb822f01000 r--s 00009000 08:01 2636889                    /home/mint/.m2/repository/net/bytebuddy/byte-buddy-agent/1.7.11/byte-buddy-agent-1.7.11.jar
+7fb822f01000-7fb822f3d000 r--s 00290000 08:01 2398342                    /home/mint/.m2/repository/net/bytebuddy/byte-buddy/1.7.11/byte-buddy-1.7.11.jar
+7fb822f3d000-7fb822f4d000 r--s 00075000 08:01 2636886                    /home/mint/.m2/repository/org/mockito/mockito-core/2.15.0/mockito-core-2.15.0.jar
+7fb822f4d000-7fb822fa2000 r--s 00367000 08:01 2624797                    /home/mint/.m2/repository/org/assertj/assertj-core/3.9.1/assertj-core-3.9.1.jar
+7fb822fa2000-7fb822faa000 r--s 00045000 08:01 1968809                    /home/mint/.m2/repository/junit/junit/4.12/junit-4.12.jar
+7fb822faa000-7fb822fac000 r--s 00006000 08:01 1968774                    /home/mint/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar
+7fb822fac000-7fb822faf000 r--s 0001b000 08:01 1968768                    /home/mint/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar
+7fb822faf000-7fb822fb5000 r--s 00031000 08:01 1968766                    /home/mint/.m2/repository/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar
+7fb822fb5000-7fb822fbc000 r--s 00020000 08:01 2271871                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/2.0.6.RELEASE/spring-boot-test-autoconfigure-2.0.6.RELEASE.jar
+7fb822fbc000-7fb822fc1000 r--s 0002b000 08:01 2133127                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-test/2.0.6.RELEASE/spring-boot-test-2.0.6.RELEASE.jar
+7fb822fc1000-7fb822fc2000 r--s 00000000 08:01 1997103                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-test/2.0.6.RELEASE/spring-boot-starter-test-2.0.6.RELEASE.jar
+7fb822fc2000-7fb822fc5000 r--s 0000e000 08:01 1968461                    /home/mint/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar
+7fb822fc5000-7fb822fc7000 r--s 00002000 08:01 1877013                    /home/mint/.m2/repository/org/atteo/evo-inflector/1.2.2/evo-inflector-1.2.2.jar
+7fb822fc7000-7fb822fc8000 r--s 00004000 08:01 2625356                    /home/mint/.m2/repository/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar
+7fb822fc8000-7fb822fcd000 r--s 0002f000 08:01 1877011                    /home/mint/.m2/repository/org/springframework/hateoas/spring-hateoas/0.25.0.RELEASE/spring-hateoas-0.25.0.RELEASE.jar
+7fb822fcd000-7fb822fd2000 r--s 0001d000 08:01 2758115                    /home/mint/.m2/repository/org/springframework/data/spring-data-rest-core/3.0.11.RELEASE/spring-data-rest-core-3.0.11.RELEASE.jar
+7fb822fd2000-7fb822fda000 r--s 0004b000 08:01 2758112                    /home/mint/.m2/repository/org/springframework/data/spring-data-rest-webmvc/3.0.11.RELEASE/spring-data-rest-webmvc-3.0.11.RELEASE.jar
+7fb822fda000-7fb822fdf000 r--s 00012000 08:01 1968662                    /home/mint/.m2/repository/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar
+7fb822fdf000-7fb822ffc000 r--s 000fe000 08:01 1968660                    /home/mint/.m2/repository/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar
+7fb822ffc000-7fb823001000 r--s 0003a000 08:01 2625516                    /home/mint/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.34/tomcat-embed-websocket-8.5.34.jar
+7fb823001000-7fb823006000 r--s 00038000 08:01 2625386                    /home/mint/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.34/tomcat-embed-el-8.5.34.jar
+7fb823006000-7fb823030000 r--s 002d5000 08:01 2625514                    /home/mint/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34.jar
+7fb823030000-7fb823031000 r--s 00000000 08:01 2758109                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/2.0.6.RELEASE/spring-boot-starter-tomcat-2.0.6.RELEASE.jar
+7fb823031000-7fb823032000 r--s 00000000 08:01 1877055                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-web/2.0.6.RELEASE/spring-boot-starter-web-2.0.6.RELEASE.jar
+7fb823032000-7fb823034000 r--s 00001000 08:01 1968496                    /home/mint/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar
+7fb823034000-7fb823037000 r--s 00016000 08:01 1968481                    /home/mint/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar
+7fb823037000-7fb823039000 r--s 00007000 08:01 1968471                    /home/mint/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar
+7fb823039000-7fb82303d000 r--s 0004c000 08:01 1968467                    /home/mint/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar
+7fb82303d000-7fb823050000 r--s 00137000 08:01 1968457                    /home/mint/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar
+7fb823050000-7fb823051000 r--s 00000000 08:01 2758097                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.0.6.RELEASE/spring-boot-starter-json-2.0.6.RELEASE.jar
+7fb823051000-7fb823052000 r--s 00000000 08:01 1877053                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-data-rest/2.0.6.RELEASE/spring-boot-starter-data-rest-2.0.6.RELEASE.jar
+7fb823052000-7fb823057000 r--s 00040000 08:01 2636881                    /home/mint/.m2/repository/org/springframework/spring-expression/5.0.10.RELEASE/spring-expression-5.0.10.RELEASE.jar
+7fb823057000-7fb823059000 r--s 00004000 08:01 2133125                    /home/mint/.m2/repository/org/springframework/spring-jcl/5.0.10.RELEASE/spring-jcl-5.0.10.RELEASE.jar
+7fb823059000-7fb823071000 r--s 00115000 08:01 2133123                    /home/mint/.m2/repository/org/springframework/spring-core/5.0.10.RELEASE/spring-core-5.0.10.RELEASE.jar
+7fb823071000-7fb82307e000 r--s 00095000 08:01 2517022                    /home/mint/.m2/repository/org/springframework/spring-beans/5.0.10.RELEASE/spring-beans-5.0.10.RELEASE.jar
+7fb82307e000-7fb823087000 r--s 00051000 08:01 2398340                    /home/mint/.m2/repository/org/springframework/spring-aop/5.0.10.RELEASE/spring-aop-5.0.10.RELEASE.jar
+7fb823087000-7fb8230a1000 r--s 000f1000 08:01 2271869                    /home/mint/.m2/repository/org/springframework/spring-context/5.0.10.RELEASE/spring-context-5.0.10.RELEASE.jar
+7fb8230a1000-7fb8230a3000 r--s 0000a000 08:01 2758094                    /home/mint/.m2/repository/org/springframework/spring-aspects/5.0.10.RELEASE/spring-aspects-5.0.10.RELEASE.jar
+7fb8230a3000-7fb8230a5000 r--s 00009000 08:01 1968728                    /home/mint/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar
+7fb8230a5000-7fb8230ad000 r--s 00037000 08:01 2758092                    /home/mint/.m2/repository/org/springframework/spring-tx/5.0.10.RELEASE/spring-tx-5.0.10.RELEASE.jar
+7fb8230ad000-7fb8230b1000 r--s 0002b000 08:01 2758078                    /home/mint/.m2/repository/org/springframework/spring-orm/5.0.10.RELEASE/spring-orm-5.0.10.RELEASE.jar
+7fb8230b1000-7fb8230c9000 r--s 000f2000 08:01 2758075                    /home/mint/.m2/repository/org/springframework/data/spring-data-commons/2.0.11.RELEASE/spring-data-commons-2.0.11.RELEASE.jar
+7fb8230c9000-7fb8230d1000 r--s 0004c000 08:01 2758073                    /home/mint/.m2/repository/org/springframework/data/spring-data-jpa/2.0.11.RELEASE/spring-data-jpa-2.0.11.RELEASE.jar
+7fb8230d1000-7fb8230d4000 r--s 00010000 08:01 2758070                    /home/mint/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar
+7fb8230d4000-7fb8230d9000 r--s 00048000 08:01 1877051                    /home/mint/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar
+7fb8230d9000-7fb8230db000 r--s 0000e000 08:01 1969382                    /home/mint/.m2/repository/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar
+7fb8230db000-7fb8230de000 r--s 0002b000 08:01 2758062                    /home/mint/.m2/repository/org/jboss/jandex/2.0.3.Final/jandex-2.0.3.Final.jar
+7fb8230de000-7fb8230e3000 r--s 00068000 08:01 1969055                    /home/mint/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar
+7fb8230e3000-7fb8230ed000 r--s 000ab000 08:01 2758059                    /home/mint/.m2/repository/org/javassist/javassist/3.22.0-GA/javassist-3.22.0-GA.jar
+7fb8230ed000-7fb8230f2000 r--s 00017000 08:01 2758052                    /home/mint/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final.jar
+7fb8230f2000-7fb8230f4000 r--s 0000f000 08:01 1968664                    /home/mint/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar
+7fb8230f4000-7fb823172000 r--s 005f0000 08:01 2758044                    /home/mint/.m2/repository/org/hibernate/hibernate-core/5.2.17.Final/hibernate-core-5.2.17.Final.jar
+7fb823172000-7fb823174000 r--s 00006000 08:01 2758041                    /home/mint/.m2/repository/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar
+7fb823174000-7fb82317d000 r--s 00059000 08:01 2758039                    /home/mint/.m2/repository/org/springframework/spring-jdbc/5.0.10.RELEASE/spring-jdbc-5.0.10.RELEASE.jar
+7fb82317d000-7fb823181000 r--s 00020000 08:01 2758026                    /home/mint/.m2/repository/com/zaxxer/HikariCP/2.7.9/HikariCP-2.7.9.jar
+7fb823181000-7fb823182000 r--s 00000000 08:01 2758023                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/2.0.6.RELEASE/spring-boot-starter-jdbc-2.0.6.RELEASE.jar
+7fb823182000-7fb82319b000 r--s 001bf000 08:01 2758019                    /home/mint/.m2/repository/org/aspectj/aspectjweaver/1.8.13/aspectjweaver-1.8.13.jar
+7fb82319b000-7fb82319c000 r--s 00000000 08:01 2758003                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-aop/2.0.6.RELEASE/spring-boot-starter-aop-2.0.6.RELEASE.jar
+7fb82319c000-7fb8231a3000 r--s 00042000 08:01 2126699                    /home/mint/.m2/repository/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar
+7fb8231a3000-7fb8231a5000 r--s 00005000 08:01 1968298                    /home/mint/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar
+7fb8231a5000-7fb8231a7000 r--s 00000000 08:01 1863164                    /home/mint/.m2/repository/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar
+7fb8231a7000-7fb8231ad000 r--s 00039000 08:01 2636878                    /home/mint/.m2/repository/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar
+7fb8231ad000-7fb8231af000 r--s 00003000 08:01 2386139                    /home/mint/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.10.0/log4j-to-slf4j-2.10.0.jar
+7fb8231af000-7fb8231ba000 r--s 00069000 08:01 1863158                    /home/mint/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar
+7fb8231ba000-7fb8231c0000 r--s 00041000 08:01 1863156                    /home/mint/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar
+7fb8231c0000-7fb8231c1000 r--s 00000000 08:01 1877049                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.0.6.RELEASE/spring-boot-starter-logging-2.0.6.RELEASE.jar
+7fb8231c1000-7fb8231e2000 r--s 000ff000 08:01 2758000                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.0.6.RELEASE/spring-boot-autoconfigure-2.0.6.RELEASE.jar
+7fb8231e2000-7fb8231f7000 r--s 000d1000 08:01 2133121                    /home/mint/.m2/repository/org/springframework/boot/spring-boot/2.0.6.RELEASE/spring-boot-2.0.6.RELEASE.jar
+7fb8231f7000-7fb8231f9000 r--s 00004000 08:01 1967720                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-compiler-javac/2.8.4/plexus-compiler-javac-2.8.4.jar
+7fb8231f9000-7fb8231fb000 r--s 00000000 08:01 1967718                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-compiler-manager/2.8.4/plexus-compiler-manager-2.8.4.jar
+7fb8231fb000-7fb8231fd000 r--s 00005000 08:01 1967716                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-compiler-api/2.8.4/plexus-compiler-api-2.8.4.jar
+7fb8231fd000-7fb823204000 r--s 00047000 08:01 1969266                    /home/mint/.m2/repository/com/thoughtworks/qdox/qdox/2.0-M8/qdox-2.0-M8.jar
+7fb823204000-7fb823206000 r--s 0001a000 08:01 1967712                    /home/mint/.m2/repository/org/ow2/asm/asm/6.2/asm-6.2.jar
+7fb823206000-7fb823208000 r--s 00008000 08:01 1967710                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-java/0.9.10/plexus-java-0.9.10.jar
+7fb823208000-7fb82320a000 r--s 00002000 08:01 1967708                    /home/mint/.m2/repository/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+7fb82320a000-7fb82320e000 r--s 0002f000 08:01 1967706                    /home/mint/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar
+7fb82320e000-7fb823211000 r--s 00026000 08:01 1967704                    /home/mint/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.2.1/maven-shared-utils-3.2.1.jar
+7fb823211000-7fb823213000 r--s 00002000 08:01 1967702                    /home/mint/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar
+7fb823213000-7fb823215000 r--s 00000000 08:01 2625825                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar
+7fb823215000-7fb823217000 r--s 0000a000 08:01 1967676                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar
+7fb823217000-7fb823219000 r--s 0000d000 08:01 1967613                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.14/plexus-interpolation-1.14.jar
+7fb823219000-7fb82321d000 r--s 00017000 08:01 1967590                    /home/mint/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar
+7fb82321d000-7fb82321e000 ---p 00000000 00:00 0 
+7fb82321e000-7fb82331e000 rw-p 00000000 00:00 0 
+7fb82331e000-7fb823321000 ---p 00000000 00:00 0 
+7fb823321000-7fb82341f000 rw-p 00000000 00:00 0 
+7fb82341f000-7fb823422000 ---p 00000000 00:00 0 
+7fb823422000-7fb823520000 rw-p 00000000 00:00 0 
+7fb823520000-7fb823523000 ---p 00000000 00:00 0 
+7fb823523000-7fb823621000 rw-p 00000000 00:00 0 
+7fb823621000-7fb823624000 ---p 00000000 00:00 0 
+7fb823624000-7fb823722000 rw-p 00000000 00:00 0 
+7fb823722000-7fb823725000 ---p 00000000 00:00 0 
+7fb823725000-7fb823823000 rw-p 00000000 00:00 0 
+7fb823823000-7fb823afb000 r--p 00000000 08:01 10995                      /usr/lib/locale/locale-archive
+7fb823afb000-7fb823afe000 ---p 00000000 00:00 0 
+7fb823afe000-7fb823bfc000 rw-p 00000000 00:00 0 
+7fb823bfc000-7fb823bff000 ---p 00000000 00:00 0 
+7fb823bff000-7fb823cfd000 rw-p 00000000 00:00 0 
+7fb823cfd000-7fb823cfe000 ---p 00000000 00:00 0 
+7fb823cfe000-7fb824000000 rw-p 00000000 00:00 0 
+7fb824000000-7fb824021000 rw-p 00000000 00:00 0 
+7fb824021000-7fb828000000 ---p 00000000 00:00 0 
+7fb828000000-7fb828001000 r--s 00000000 08:01 1877047                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter/2.0.6.RELEASE/spring-boot-starter-2.0.6.RELEASE.jar
+7fb828001000-7fb828005000 r--s 0000f000 08:01 1967572                    /home/mint/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar
+7fb828005000-7fb828007000 r--s 00002000 08:01 1967569                    /home/mint/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar
+7fb828007000-7fb828009000 r--s 00018000 08:01 1967567                    /home/mint/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar
+7fb828009000-7fb82800b000 r--s 0000b000 08:01 1967556                    /home/mint/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar
+7fb82800b000-7fb828010000 r--s 00020000 08:01 1967506                    /home/mint/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar
+7fb828010000-7fb828012000 r--s 00006000 08:01 1967504                    /home/mint/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar
+7fb828012000-7fb828014000 r--s 00008000 08:01 1967502                    /home/mint/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar
+7fb828014000-7fb828016000 r--s 0000a000 08:01 1967500                    /home/mint/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar
+7fb828016000-7fb828021000 r--s 00076000 08:01 1967498                    /home/mint/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar
+7fb828021000-7fb828025000 r--s 00033000 08:01 1967496                    /home/mint/.m2/repository/org/codehaus/plexus/plexus-utils/2.0.4/plexus-utils-2.0.4.jar
+7fb828025000-7fb828027000 r--s 0000b000 08:01 1967494                    /home/mint/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar
+7fb828027000-7fb828032000 r--s 00069000 08:01 1967492                    /home/mint/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar
+7fb828032000-7fb828037000 r--s 00021000 08:01 1967490                    /home/mint/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar
+7fb828037000-7fb82803d000 r--s 0002c000 08:01 1967488                    /home/mint/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar
+7fb82803d000-7fb828040000 r--s 00026000 08:01 1967486                    /home/mint/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar
+7fb828040000-7fb828042000 r--s 0000a000 08:01 1967484                    /home/mint/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar
+7fb828042000-7fb829146000 rw-p 00000000 00:00 0 
+7fb829146000-7fb829320000 r--s 03d6a000 08:01 595694                     /opt/java/jdk1.8.0_172/jre/lib/rt.jar
+7fb829320000-7fb82d000000 rw-p 00000000 00:00 0 
+7fb82d000000-7fb82d770000 rwxp 00000000 00:00 0 
+7fb82d770000-7fb83c000000 ---p 00000000 00:00 0 
+7fb83c000000-7fb83cbcc000 rw-p 00000000 00:00 0 
+7fb83cbcc000-7fb840000000 ---p 00000000 00:00 0 
+7fb840000000-7fb840001000 r--s 00000000 08:01 1997101                    /home/mint/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/2.0.6.RELEASE/spring-boot-starter-data-jpa-2.0.6.RELEASE.jar
+7fb840001000-7fb840006000 r--s 00084000 08:01 595643                     /opt/java/jdk1.8.0_172/jre/lib/jfr.jar
+7fb840006000-7fb840c4a000 rw-p 00000000 00:00 0 
+7fb840c4a000-7fb840c4b000 ---p 00000000 00:00 0 
+7fb840c4b000-7fb840d4b000 rw-p 00000000 00:00 0 
+7fb840d4b000-7fb840d4c000 ---p 00000000 00:00 0 
+7fb840d4c000-7fb840e4c000 rw-p 00000000 00:00 0 
+7fb840e4c000-7fb840e4d000 ---p 00000000 00:00 0 
+7fb840e4d000-7fb840f4d000 rw-p 00000000 00:00 0 
+7fb840f4d000-7fb840f4e000 ---p 00000000 00:00 0 
+7fb840f4e000-7fb84104e000 rw-p 00000000 00:00 0 
+7fb84104e000-7fb84104f000 ---p 00000000 00:00 0 
+7fb84104f000-7fb841166000 rw-p 00000000 00:00 0 
+7fb841166000-7fb8413d9000 ---p 00000000 00:00 0 
+7fb8413d9000-7fb8413f0000 rw-p 00000000 00:00 0 
+7fb8413f0000-7fb841662000 ---p 00000000 00:00 0 
+7fb841662000-7fb8416a9000 rw-p 00000000 00:00 0 
+7fb8416a9000-7fb8417a7000 ---p 00000000 00:00 0 
+7fb8417a7000-7fb8417c6000 rw-p 00000000 00:00 0 
+7fb8417c6000-7fb841b68000 ---p 00000000 00:00 0 
+7fb841b68000-7fb841b83000 r-xp 00000000 08:01 595861                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libzip.so
+7fb841b83000-7fb841d83000 ---p 0001b000 08:01 595861                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libzip.so
+7fb841d83000-7fb841d84000 rw-p 0001b000 08:01 595861                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libzip.so
+7fb841d84000-7fb841d8f000 r-xp 00000000 08:01 399694                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fb841d8f000-7fb841f8e000 ---p 0000b000 08:01 399694                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fb841f8e000-7fb841f8f000 r--p 0000a000 08:01 399694                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fb841f8f000-7fb841f90000 rw-p 0000b000 08:01 399694                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fb841f90000-7fb841f96000 rw-p 00000000 00:00 0 
+7fb841f96000-7fb841fa1000 r-xp 00000000 08:01 399704                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fb841fa1000-7fb8421a0000 ---p 0000b000 08:01 399704                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fb8421a0000-7fb8421a1000 r--p 0000a000 08:01 399704                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fb8421a1000-7fb8421a2000 rw-p 0000b000 08:01 399704                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fb8421a2000-7fb8421b8000 r-xp 00000000 08:01 399688                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fb8421b8000-7fb8423b7000 ---p 00016000 08:01 399688                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fb8423b7000-7fb8423b8000 r--p 00015000 08:01 399688                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fb8423b8000-7fb8423b9000 rw-p 00016000 08:01 399688                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fb8423b9000-7fb8423bb000 rw-p 00000000 00:00 0 
+7fb8423bb000-7fb8423c3000 r-xp 00000000 08:01 399690                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fb8423c3000-7fb8425c2000 ---p 00008000 08:01 399690                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fb8425c2000-7fb8425c3000 r--p 00007000 08:01 399690                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fb8425c3000-7fb8425c4000 rw-p 00008000 08:01 399690                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fb8425c4000-7fb8425ef000 r-xp 00000000 08:01 595855                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libjava.so
+7fb8425ef000-7fb8427ee000 ---p 0002b000 08:01 595855                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libjava.so
+7fb8427ee000-7fb8427f0000 rw-p 0002a000 08:01 595855                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libjava.so
+7fb8427f0000-7fb8427fd000 r-xp 00000000 08:01 595860                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libverify.so
+7fb8427fd000-7fb8429fd000 ---p 0000d000 08:01 595860                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libverify.so
+7fb8429fd000-7fb8429ff000 rw-p 0000d000 08:01 595860                     /opt/java/jdk1.8.0_172/jre/lib/amd64/libverify.so
+7fb8429ff000-7fb842a06000 r-xp 00000000 08:01 399749                     /lib/x86_64-linux-gnu/librt-2.23.so
+7fb842a06000-7fb842c05000 ---p 00007000 08:01 399749                     /lib/x86_64-linux-gnu/librt-2.23.so
+7fb842c05000-7fb842c06000 r--p 00006000 08:01 399749                     /lib/x86_64-linux-gnu/librt-2.23.so
+7fb842c06000-7fb842c07000 rw-p 00007000 08:01 399749                     /lib/x86_64-linux-gnu/librt-2.23.so
+7fb842c07000-7fb842d0f000 r-xp 00000000 08:01 399665                     /lib/x86_64-linux-gnu/libm-2.23.so
+7fb842d0f000-7fb842f0e000 ---p 00108000 08:01 399665                     /lib/x86_64-linux-gnu/libm-2.23.so
+7fb842f0e000-7fb842f0f000 r--p 00107000 08:01 399665                     /lib/x86_64-linux-gnu/libm-2.23.so
+7fb842f0f000-7fb842f10000 rw-p 00108000 08:01 399665                     /lib/x86_64-linux-gnu/libm-2.23.so
+7fb842f10000-7fb843bec000 r-xp 00000000 08:01 595837                     /opt/java/jdk1.8.0_172/jre/lib/amd64/server/libjvm.so
+7fb843bec000-7fb843dec000 ---p 00cdc000 08:01 595837                     /opt/java/jdk1.8.0_172/jre/lib/amd64/server/libjvm.so
+7fb843dec000-7fb843ec6000 rw-p 00cdc000 08:01 595837                     /opt/java/jdk1.8.0_172/jre/lib/amd64/server/libjvm.so
+7fb843ec6000-7fb843f11000 rw-p 00000000 00:00 0 
+7fb843f11000-7fb8440d1000 r-xp 00000000 08:01 399595                     /lib/x86_64-linux-gnu/libc-2.23.so
+7fb8440d1000-7fb8442d1000 ---p 001c0000 08:01 399595                     /lib/x86_64-linux-gnu/libc-2.23.so
+7fb8442d1000-7fb8442d5000 r--p 001c0000 08:01 399595                     /lib/x86_64-linux-gnu/libc-2.23.so
+7fb8442d5000-7fb8442d7000 rw-p 001c4000 08:01 399595                     /lib/x86_64-linux-gnu/libc-2.23.so
+7fb8442d7000-7fb8442db000 rw-p 00000000 00:00 0 
+7fb8442db000-7fb8442de000 r-xp 00000000 08:01 399619                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7fb8442de000-7fb8444dd000 ---p 00003000 08:01 399619                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7fb8444dd000-7fb8444de000 r--p 00002000 08:01 399619                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7fb8444de000-7fb8444df000 rw-p 00003000 08:01 399619                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7fb8444df000-7fb8444f5000 r-xp 00000000 08:01 595564                     /opt/java/jdk1.8.0_172/lib/amd64/jli/libjli.so
+7fb8444f5000-7fb8446f4000 ---p 00016000 08:01 595564                     /opt/java/jdk1.8.0_172/lib/amd64/jli/libjli.so
+7fb8446f4000-7fb8446f5000 rw-p 00015000 08:01 595564                     /opt/java/jdk1.8.0_172/lib/amd64/jli/libjli.so
+7fb8446f5000-7fb84470d000 r-xp 00000000 08:01 399741                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fb84470d000-7fb84490c000 ---p 00018000 08:01 399741                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fb84490c000-7fb84490d000 r--p 00017000 08:01 399741                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fb84490d000-7fb84490e000 rw-p 00018000 08:01 399741                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fb84490e000-7fb844912000 rw-p 00000000 00:00 0 
+7fb844912000-7fb844938000 r-xp 00000000 08:01 399567                     /lib/x86_64-linux-gnu/ld-2.23.so
+7fb844938000-7fb84493a000 r--s 0000e000 08:01 1966740                    /home/mint/.m2/repository/org/apache/maven/plugins/maven-compiler-plugin/3.8.0/maven-compiler-plugin-3.8.0.jar
+7fb84493a000-7fb84494d000 r--s 00345000 08:01 595729                     /opt/java/jdk1.8.0_172/jre/lib/resources.jar
+7fb84494d000-7fb844a18000 rw-p 00000000 00:00 0 
+7fb844a18000-7fb844a1b000 ---p 00000000 00:00 0 
+7fb844a1b000-7fb844b1d000 rw-p 00000000 00:00 0 
+7fb844b1d000-7fb844b1e000 r--s 00006000 08:01 1967700                    /home/mint/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar
+7fb844b1e000-7fb844b23000 r--s 002f9000 08:01 595692                     /opt/java/jdk1.8.0_172/jre/lib/charsets.jar
+7fb844b23000-7fb844b26000 r--s 0001a000 08:01 595881                     /opt/java/jdk1.8.0_172/jre/lib/jce.jar
+7fb844b26000-7fb844b2b000 r--s 0009d000 08:01 595743                     /opt/java/jdk1.8.0_172/jre/lib/jsse.jar
+7fb844b2b000-7fb844b33000 rw-s 00000000 08:01 824222                     /tmp/hsperfdata_mint/14606
+7fb844b33000-7fb844b34000 rw-p 00000000 00:00 0 
+7fb844b34000-7fb844b35000 ---p 00000000 00:00 0 
+7fb844b35000-7fb844b37000 rw-p 00000000 00:00 0 
+7fb844b37000-7fb844b38000 r--p 00025000 08:01 399567                     /lib/x86_64-linux-gnu/ld-2.23.so
+7fb844b38000-7fb844b39000 rw-p 00026000 08:01 399567                     /lib/x86_64-linux-gnu/ld-2.23.so
+7fb844b39000-7fb844b3a000 rw-p 00000000 00:00 0 
+7fff39767000-7fff3978b000 rw-p 00000000 00:00 0                          [stack]
+7fff397b2000-7fff397b4000 r--p 00000000 00:00 0                          [vvar]
+7fff397b4000-7fff397b6000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 
+java_command: com.canada.provisions.main.CartrackerApplication
+java_class_path (initial): /opt/java/jdk1.8.0_172/jre/lib/resources.jar:/opt/java/jdk1.8.0_172/jre/lib/rt.jar:/opt/java/jdk1.8.0_172/jre/lib/jsse.jar:/opt/java/jdk1.8.0_172/jre/lib/jce.jar:/opt/java/jdk1.8.0_172/jre/lib/charsets.jar:/opt/java/jdk1.8.0_172/jre/lib/jfr.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/zipfs.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/sunpkcs11.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/cldrdata.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/sunjce_provider.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/sunec.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/localedata.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/jaccess.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/jfxrt.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/nashorn.jar:/opt/java/jdk1.8.0_172/jre/lib/ext/dnsns.jar:/home/mint/Desktop/RepoDesk/cartracker/restservices/target/classes:/home/mint/Desktop/RepoDesk/cartracker/core/target/classes:/home/mint/.m2/repository/org/apache/maven/plugins/maven-compiler-plugin/3.8.0/maven-compiler-plugin-3.8.0.jar:/home/mint/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/home/mint/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/home/mint/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/home/mint/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/home/mint/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/home/mint/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/home/mint/.m2/repository/org/codehaus/plexus/plexus-utils/2.0.4/plexus-utils-2.0.4.jar:/home/mint/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/home/mint/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/home/mint/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/home/mint/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/home/mint/.m2/reposit
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/opt/java/jdk1.8.0_172
+PATH=/home/mint/bin:/home/mint/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/apache-maven-3.5.4/bin:/opt/java/jdk1.8.0_172/bin:/home/mint/.npm-global/lib/node_modules/@angular/cli/bin:/home/mint/.npm-global/lib/node_modules/typescript/bin
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xad2ab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xad2ab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x92a790], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x92a790], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x92a790], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x92a790], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x92bff0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x92d3f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x92d3f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x92d3f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x92d3f0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=LinuxMint
+DISTRIB_RELEASE=18.3
+DISTRIB_CODENAME=sylvia
+DISTRIB_DESCRIPTION="Linux Mint 18.3 Sylvia"
+
+uname:Linux 4.10.0-38-generic #42~16.04.1-Ubuntu SMP Tue Oct 10 16:32:20 UTC 2017 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 30980, NOFILE 1048576, AS infinity
+load average:0.81 0.54 0.65
+
+/proc/meminfo:
+MemTotal:        7978008 kB
+MemFree:          128892 kB
+MemAvailable:      35376 kB
+Buffers:            1212 kB
+Cached:           157496 kB
+SwapCached:            0 kB
+Active:          7444012 kB
+Inactive:         137444 kB
+Active(anon):    7425628 kB
+Inactive(anon):   119632 kB
+Active(file):      18384 kB
+Inactive(file):    17812 kB
+Unevictable:         112 kB
+Mlocked:             112 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               440 kB
+Writeback:             0 kB
+AnonPages:       7423308 kB
+Mapped:           145640 kB
+Shmem:            121828 kB
+Slab:             124876 kB
+SReclaimable:      45036 kB
+SUnreclaim:        79840 kB
+KernelStack:       18592 kB
+PageTables:        68068 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3989004 kB
+Committed_AS:   15174680 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   4296704 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      194496 kB
+DirectMap2M:     7997440 kB
+
+
+CPU:total 5 (initial active 5) (5 cores per cpu, 1 threads per core) family 6 model 158 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, 3dnowpref, lzcnt, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+cpu MHz		: 2904.002
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 5
+core id		: 0
+cpu cores	: 5
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt
+bugs		:
+bogomips	: 5808.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+cpu MHz		: 2904.002
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 5
+core id		: 1
+cpu cores	: 5
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt
+bugs		:
+bogomips	: 5808.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+cpu MHz		: 2904.002
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 5
+core id		: 2
+cpu cores	: 5
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt
+bugs		:
+bogomips	: 5808.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+cpu MHz		: 2904.002
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 5
+core id		: 3
+cpu cores	: 5
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt
+bugs		:
+bogomips	: 5808.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+cpu MHz		: 2904.002
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 5
+core id		: 4
+cpu cores	: 5
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase avx2 invpcid rdseed clflushopt
+bugs		:
+bogomips	: 5808.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 7978008k(129236k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.172-b11) for linux-amd64 JRE (1.8.0_172-b11), built on Mar 28 2018 21:44:09 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sat Jan 12 16:07:31 2019
+elapsed time: 2 seconds (0d 0h 0m 2s)
+
