@@ -18,9 +18,9 @@ public class ElectricCarEntity extends AbstractVehicleEntity {
     public ElectricCarEntity() {
     }
 
-    public ElectricCarEntity(final int id, final String make, final String model, final Year year, final int odometerReading,
+    public ElectricCarEntity(final String plate, final String make, final String model, final Year year, final int odometerReading,
             final int autonomy) {
-        super(id, make, model, year, odometerReading);
+        super(plate, make, model, year, odometerReading);
         this.autonomy = autonomy;
     }
 

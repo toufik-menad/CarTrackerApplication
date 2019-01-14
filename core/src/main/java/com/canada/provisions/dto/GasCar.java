@@ -2,12 +2,16 @@ package com.canada.provisions.dto;
 
 import java.time.Year;
 
+import org.springframework.stereotype.Component;
+
+
 /**
  * @author T.Menad
  */
+@Component
 public class GasCar {
 
-    private int id;
+    private String plate;
 
     private String make;
 
@@ -18,6 +22,11 @@ public class GasCar {
     private int odometerReading;
 
     private int gears;
+    
+    
+    public GasCar() {
+    	
+    }
 
     /**
      * @param id
@@ -27,8 +36,8 @@ public class GasCar {
      * @param odometerReading
      * @param gears
      */
-    public GasCar(final int id, final String make, final String model, final Year year, final int odometerReading, final int gears) {
-        this.id = id;
+    public GasCar(final String plate, final String make, final String model, final Year year, final int odometerReading, final int gears) {
+        this.plate= plate;
         this.make = make;
         this.model = model;
         this.year = year;
@@ -36,112 +45,53 @@ public class GasCar {
         this.gears = gears;
     }
 
-    /**
-     * Getter for id.
-     * 
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
+	public String getPlate() {
+		return plate;
+	}
 
-    /**
-     * Setter for id.
-     * 
-     * @param id the id to set
-     */
-    public void setId(final int id) {
-        this.id = id;
-    }
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
 
-    /**
-     * Getter for make.
-     * 
-     * @return the make
-     */
-    public String getMake() {
-        return make;
-    }
+	public String getMake() {
+		return make;
+	}
 
-    /**
-     * Setter for make.
-     * 
-     * @param make the make to set
-     */
-    public void setMake(final String make) {
-        this.make = make;
-    }
+	public void setMake(String make) {
+		this.make = make;
+	}
 
-    /**
-     * Getter for model.
-     * 
-     * @return the model
-     */
-    public String getModel() {
-        return model;
-    }
+	public String getModel() {
+		return model;
+	}
 
-    /**
-     * Setter for model.
-     * 
-     * @param model the model to set
-     */
-    public void setModel(final String model) {
-        this.model = model;
-    }
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-    /**
-     * Getter for year.
-     * 
-     * @return the year
-     */
-    public Year getYear() {
-        return year;
-    }
+	public Year getYear() {
+		return year;
+	}
 
-    /**
-     * Setter for year.
-     * 
-     * @param year the year to set
-     */
-    public void setYear(final Year year) {
-        this.year = year;
-    }
+	public void setYear(Year year) {
+		this.year = year;
+	}
 
-    /**
-     * Getter for odometerReading.
-     * 
-     * @return the odometerReading
-     */
-    public int getOdometerReading() {
-        return odometerReading;
-    }
+	public int getOdometerReading() {
+		return odometerReading;
+	}
 
-    /**
-     * Setter for odometerReading.
-     * 
-     * @param odometerReading the odometerReading to set
-     */
-    public void setOdometerReading(final int odometerReading) {
-        this.odometerReading = odometerReading;
-    }
+	public void setOdometerReading(int odometerReading) {
+		this.odometerReading = odometerReading;
+	}
 
-    /**
-     * Getter for gears.
-     * 
-     * @return the gears
-     */
-    public int getGears() {
-        return gears;
-    }
+	public int getGears() {
+		return gears;
+	}
 
-    /**
-     * Setter for gears.
-     * 
-     * @param gears the gears to set
-     */
-    public void setGears(final int gears) {
-        this.gears = gears;
-    }
+	public void setGears(int gears) {
+		this.gears = gears;
+	}
 
+    
 }

@@ -15,7 +15,7 @@ public interface VehicleService<T> {
 
     public T createCar(T car);
 
-    public void deleteCar(int id);
+    public void deleteCar(String plate);
 
     public List<T> getList();
 

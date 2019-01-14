@@ -29,12 +29,14 @@ public class ElectricCarServiceImpl implements ElectricCarService {
     @Override
     public ElectricCar createCar(final ElectricCar car) {
         final ElectricCarEntity electricCarEntity = new ElectricCarEntity();
+        electricCarEntity.setPlate(car.getPlate());
         electricCarEntity.setMake(car.getMake());
         electricCarEntity.setModel(car.getModel());
         electricCarEntity.setYear(car.getYear());
         electricCarEntity.setOdometerReading(car.getOdometerReading());
+        electricCarEntity.setAutonomy(car.getAutonomy());
         electricRepository.save(electricCarEntity);
-        return electricRepository.retrieCarAsDTO(car.getId());
+        return electricRepository.retrieCarAsDTO(car.getPlate());
 
     }
 
@@ -47,9 +49,9 @@ public class ElectricCarServiceImpl implements ElectricCarService {
     @Override
     public String serviceTires(final ElectricCar car) {
 
-        if (car.getOdometerReading() >= electricRepository.retrieCarAsDTO(car.getId()).getOdometerReading()) {
+        if (car.getOdometerReading() >= electricRepository.retrieCarAsDTO(car.getPlate()).getOdometerReading()) {
 
-            final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getId());
+            final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getPlate());
             int mileage = 0;
 
             if (electricCarEntity.isPresent()) {
@@ -75,7 +77,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
      */
     @Override
     public String cleanBody(final ElectricCar car) {
-        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getId());
+        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getPlate());
 
         if (electricCarEntity.isPresent() && (car.getOdometerReading() - electricCarEntity.get()
                 .getOdometerReading() >= Constants.CLEANINGSERVICE.getValue())) {
@@ -93,7 +95,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
      */
     @Override
     public String inspectEngine(final ElectricCar car) {
-        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getId());
+        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getPlate());
 
         if (electricCarEntity.isPresent() && (car.getOdometerReading() - electricCarEntity.get().getOdometerReading() >= Constants.INSPECTENGINE
                 .getValue())) {
@@ -110,15 +112,15 @@ public class ElectricCarServiceImpl implements ElectricCarService {
      */
     @Override
     public List<ElectricCar> getList() {
-        return electricRepository.findAll().stream().map(car -> electricRepository.retrieCarAsDTO(car.getId())).collect(Collectors.toList());
+        return electricRepository.findAll().stream().map(car -> electricRepository.retrieCarAsDTO(car.getPlate())).collect(Collectors.toList());
     }
 
     /**
      * @param id
      */
     @Override
-    public void deleteCar(final int id) {
-        electricRepository.deleteById(id);
+    public void deleteCar(final String plate) {
+        electricRepository.deleteById(plate);
 
     }
 
@@ -127,7 +129,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
      */
     @Override
     public String chargeBatteries(final ElectricCar car) {
-        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getId());
+        final Optional<ElectricCarEntity> electricCarEntity = electricRepository.findById(car.getPlate());
 
         if (electricCarEntity.isPresent() && (car.getOdometerReading() - electricCarEntity.get().getOdometerReading() >= Constants.BATTERYCHARGE
                 .getValue())) {

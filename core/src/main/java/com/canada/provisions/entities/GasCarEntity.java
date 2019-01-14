@@ -19,8 +19,8 @@ public class GasCarEntity extends AbstractVehicleEntity {
 
     }
 
-    public GasCarEntity(final int id, final String make, final String model, final Year year, final int odometerReading, final int gears) {
-        super(id, make, model, year, odometerReading);
+    public GasCarEntity(final String plate, final String make, final String model, final Year year, final int odometerReading, final int gears) {
+        super(plate, make, model, year, odometerReading);
         this.gears = gears;
 
     }

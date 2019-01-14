@@ -19,9 +19,9 @@ public class DieselCarEntity extends AbstractVehicleEntity {
 
     }
 
-    public DieselCarEntity(final int id, final String make, final String model, final Year year, final int odometerReading,
+    public DieselCarEntity(final String plate, final String make, final String model, final Year year, final int odometerReading,
             final String fuelType) {
-        super(id, make, model, year, odometerReading);
+        super(plate, make, model, year, odometerReading);
         this.fuelType = fuelType;
 
     }

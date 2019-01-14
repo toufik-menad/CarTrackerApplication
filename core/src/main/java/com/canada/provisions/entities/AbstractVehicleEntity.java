@@ -26,9 +26,8 @@ import javax.persistence.TemporalType;
 abstract class AbstractVehicleEntity {
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", unique = true)
-    private int id;
+    @Column(name = "plate", unique = true, nullable=false)
+    private String plate;
 
     @Column(name = "make")
     private String make;
@@ -69,29 +68,25 @@ abstract class AbstractVehicleEntity {
      * @param year
      * @param odometerReading
      */
-    public AbstractVehicleEntity(final int id, final String make, final String model, final Year year, final int odometerReading) {
-        this.id = id;
+    public AbstractVehicleEntity(final String plate, final String make, final String model, final Year year, final int odometerReading) {
+        this.plate = plate;
         this.make = make;
         this.model = model;
         this.year = year;
         this.odometerReading = odometerReading;
     }
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
+    
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(final int id) {
-        this.id = id;
-    }
+    public String getPlate() {
+		return plate;
+	}
 
-    /**
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
+
+	/**
      * @return the make
      */
     public String getMake() {

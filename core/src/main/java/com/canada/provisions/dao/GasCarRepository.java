@@ -13,13 +13,13 @@ import org.springframework.data.repository.query.Param;
 /**
  * @author T.Menad
  */
-public interface GasCarRepository extends JpaRepository<GasCarEntity, Integer> {
+public interface GasCarRepository extends JpaRepository<GasCarEntity, String> {
 
     @Override
     @Query("SELECT c FROM GasCarEntity AS c")
     List<GasCarEntity> findAll();
 
-    @Query("SELECT new com.canada.provisions.dto.GasCar(c.id, c.make, c.model, c.year, c.odometerReading, c.gears) FROM GasCarEntity c WHERE c.id = :id")
-    GasCar retrieCarAsDTO(@Param("id") int name);
+    @Query("SELECT new com.canada.provisions.dto.GasCar(c.plate, c.make, c.model, c.year, c.odometerReading, c.gears) FROM GasCarEntity c WHERE c.plate = :plate")
+    GasCar retrieCarAsDTO(@Param("plate") String name);
 
 }

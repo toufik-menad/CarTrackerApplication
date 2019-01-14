@@ -3,13 +3,17 @@
  */
 package com.canada.provisions.services;
 
-import com.canada.provisions.entities.DieselCarEntity;
+import org.springframework.stereotype.Service;
+
+import com.canada.provisions.dto.DieselCar;
+
 
 /**
  * @author T.Menad
  */
-public interface DieselCarService extends VehicleService<DieselCarEntity> {
+@Service
+public interface DieselCarService extends VehicleService<DieselCar> {
 
-    public String changeOil();
+    public String changeOil(DieselCar car);
 
 }
