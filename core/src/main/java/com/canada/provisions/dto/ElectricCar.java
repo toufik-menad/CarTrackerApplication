@@ -2,10 +2,7 @@
 package com.canada.provisions.dto;
 
 import java.time.Year;
-<<<<<<< HEAD
-=======
-import java.util.Objects;
->>>>>>> 67c80255f11405f68a453d8707de2b6899424774
+
 
 import org.springframework.stereotype.Component;
 
@@ -96,25 +93,6 @@ public class ElectricCar {
 		this.autonomy = autonomy;
 	}
 
-<<<<<<< HEAD
-    
-=======
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		ElectricCar that = (ElectricCar) o;
-		return odometerReading == that.odometerReading &&
-				autonomy == that.autonomy &&
-				plate.equals(that.plate) &&
-				make.equals(that.make) &&
-				model.equals(that.model) &&
-				year.equals(that.year);
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(plate, make, model, year, odometerReading, autonomy);
-	}
->>>>>>> 67c80255f11405f68a453d8707de2b6899424774
+	
 }
