@@ -22,10 +22,7 @@ application.properties
 classes/
 /build
 buildSrc/build
-<<<<<<< HEAD
 /META-INF/
-=======
->>>>>>> 67c80255f11405f68a453d8707de2b6899424774
 /spring-*/build
 /src/asciidoc/build
 /target/
@@ -47,8 +44,7 @@ test-output
 atlassian-ide-plugin.xml
 .gradletasknamecache
 angular.json
-<<<<<<< HEAD
+
 /.metadata/
-=======
 /.metadata/
->>>>>>> 67c80255f11405f68a453d8707de2b6899424774
+
