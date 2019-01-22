@@ -35,6 +35,14 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/ca.juliusdavies/not-yet-commons-ssl -->
+		<dependency>
+			<groupId>ca.juliusdavies</groupId>
+			<artifactId>not-yet-commons-ssl</artifactId>
+			<version>0.3.9</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.powermock</groupId>
@@ -99,27 +107,27 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
 		<dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            
-            </dependency>
-<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
-<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
-<dependency>
-    <groupId>org.junit.platform</groupId>
-    <artifactId>junit-platform-runner</artifactId>
-    <version>1.1.0</version>
-    <scope>test</scope>
-</dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
+		<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>1.1.0</version>
+			<scope>test</scope>
+		</dependency>
 
 
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+
+			<scope>test</scope>
+		</dependency>
 
 
 
