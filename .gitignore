@@ -14,7 +14,6 @@ derby.log
 spring-test/test-output/
 .gradle
 argfile*
-pom.xml
 activemq-data/
 application.properties
 .classpath
@@ -22,7 +21,9 @@ application.properties
 classes/
 /build
 buildSrc/build
-/META-INF/
+*/*/src/META-INF/*
+*/META-INF/*
+META-INF/*
 /spring-*/build
 /src/asciidoc/build
 /target/
