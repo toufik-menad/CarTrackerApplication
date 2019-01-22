@@ -23,5 +23,9 @@ public class CartrackerApplication  {
         SpringApplication.run(CartrackerApplication.class, args);
     }
 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 67c80255f11405f68a453d8707de2b6899424774
 }

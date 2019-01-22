@@ -31,7 +31,11 @@ public class ElectricCarServiceImplTest {
 	@Test
 	public void createCarTest() {
 		ElectricCar car = new ElectricCar();
+<<<<<<< HEAD
 		car.setPlate("plate");;
+=======
+		car.setPlate("Plate");
+>>>>>>> 67c80255f11405f68a453d8707de2b6899424774
 		electricRepository = PowerMockito.mock(ElectricCarRepository.class);
 		PowerMockito.doReturn(new ElectricCar()).when(electricRepository).retrieCarAsDTO(Mockito.any());
 		ElectricCar createdCar = electricCarService.createCar(car);
