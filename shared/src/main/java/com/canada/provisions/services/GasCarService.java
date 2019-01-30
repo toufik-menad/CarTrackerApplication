@@ -3,6 +3,7 @@
  */
 package com.canada.provisions.services;
 
+import com.canada.provisions.dto.GasCar;
 import org.springframework.stereotype.Service;
 
 import com.canada.provisions.entities.GasCarEntity;
@@ -11,6 +12,6 @@ import com.canada.provisions.entities.GasCarEntity;
  * @author T.Menad
  */
 @Service
-public interface GasCarService extends VehicleService<GasCarEntity> {
+public interface GasCarService extends VehicleService<GasCar> {
 
 }
