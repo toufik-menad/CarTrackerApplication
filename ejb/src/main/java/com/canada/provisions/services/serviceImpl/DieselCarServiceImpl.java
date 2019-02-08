@@ -139,4 +139,10 @@ public class DieselCarServiceImpl implements DieselCarService{
 		}
 	}
 
+	@Override
+	public DieselCar getById(String plate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

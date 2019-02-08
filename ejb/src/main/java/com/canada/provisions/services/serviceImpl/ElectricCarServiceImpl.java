@@ -1,13 +1,18 @@
 
 package com.canada.provisions.services.serviceImpl;
 
+import java.time.Year;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.persistence.NoResultException;
 
 import com.canada.provisions.dao.ElectricCarRepository;
 import com.canada.provisions.dto.ElectricCar;
 import com.canada.provisions.entities.ElectricCarEntity;
+import com.canada.provisions.exceptions.NoCarFoundException;
 import com.canada.provisions.services.ElectricCarService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +28,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
     private ElectricCarRepository electricRepository;
 
     /**
+     * {@inheritDoc}
      * @param car
      * @return
      */
@@ -41,7 +47,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
     }
 
     /**
-     * simple method to inform drivers tires need service
+     * {@inheritDoc}
      * 
      * @param car
      * @return
@@ -71,7 +77,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**
+    /**{@inheritDoc}
      * @param car
      * @return
      */
@@ -89,7 +95,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**
+    /**{@inheritDoc}
      * @param car
      * @return
      */
@@ -107,7 +113,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**
+    /**{@inheritDoc}
      * @return
      */
     @Override
@@ -115,7 +121,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         return electricRepository.findAll().stream().map(car -> electricRepository.retrieCarAsDTO(car.getPlate())).collect(Collectors.toList());
     }
 
-    /**
+    /**{@inheritDoc}
      * @param id
      */
     @Override
@@ -124,7 +130,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
 
     }
 
-    /**
+    /**{@inheritDoc}
      * @return
      */
     @Override
@@ -141,5 +147,20 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
 
     }
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ElectricCar getById(String plate) throws NoCarFoundException {
+		try {
+			final Optional<ElectricCarEntity> entity = electricRepository.findById(plate);
+			final ElectricCar carDTO = new ElectricCar(entity.get().getPlate(), entity.get().getMake(), entity.get().getModel(),entity.get().getYear(),entity.get().getOdometerReading(),entity.get().getAutonomy());
+			return carDTO;
+		}catch (final NoSuchElementException ex) {
+			throw new NoCarFoundException(ex.getMessage());
+		}
+		
+	}
 
 }

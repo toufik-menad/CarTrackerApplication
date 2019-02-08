@@ -4,6 +4,7 @@
 package com.canada.provisions.controllers;
 import java.util.List;
 import com.canada.provisions.dto.ElectricCar;
+import com.canada.provisions.exceptions.NoCarFoundException;
 import com.canada.provisions.services.ElectricCarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,12 @@ public class ElectricCarController {
         return electricCarService.serviceTires(electricCar);
     }
 
+    @CrossOrigin
+    @GetMapping(value = "/{plate}")
+    public ElectricCar getCarById(@PathVariable final String plate) throws NoCarFoundException {
+        return electricCarService.getById(plate);
+    }
+    
     @CrossOrigin
     @GetMapping()
     public List<ElectricCar> getAll() {

@@ -68,4 +68,13 @@ public class GasCarServiceImpl implements GasCarService{
 	public String inspectEngine(GasCar car) {
 		return null;
 	}
+
+
+
+
+	@Override
+	public GasCar getById(String plate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
