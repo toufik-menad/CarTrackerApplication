@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.canada.provisions.exceptions.NoCarFoundException;
 
+import javax.smartcardio.CardNotPresentException;
+
 /**
  * @author T.Menad
  */
@@ -24,7 +26,7 @@ public interface VehicleService<T> {
     /**deletes car from the database
      * @param plate
      */
-    public void deleteCar(String plate);
+    public void deleteCar(String plate) throws CardNotPresentException;
 
     /**gets all instances from the database
      * @return

@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.NoResultException;
+import javax.smartcardio.CardNotPresentException;
 
 import com.canada.provisions.dao.ElectricCarRepository;
 import com.canada.provisions.dto.ElectricCar;
@@ -29,6 +30,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
 
     /**
      * {@inheritDoc}
+     *
      * @param car
      * @return
      */
@@ -48,7 +50,7 @@ public class ElectricCarServiceImpl implements ElectricCarService {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @param car
      * @return
      */
@@ -77,7 +79,9 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**{@inheritDoc}
+    /**
+     * {@inheritDoc}
+     *
      * @param car
      * @return
      */
@@ -95,7 +99,9 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**{@inheritDoc}
+    /**
+     * {@inheritDoc}
+     *
      * @param car
      * @return
      */
@@ -113,7 +119,9 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         }
     }
 
-    /**{@inheritDoc}
+    /**
+     * {@inheritDoc}
+     *
      * @return
      */
     @Override
@@ -121,16 +129,24 @@ public class ElectricCarServiceImpl implements ElectricCarService {
         return electricRepository.findAll().stream().map(car -> electricRepository.retrieCarAsDTO(car.getPlate())).collect(Collectors.toList());
     }
 
-    /**{@inheritDoc}
-     * @param id
+    /**deletes a car instance based on the plate number
+     * {@inheritDoc}
+     *
+     * @param plate
      */
     @Override
-    public void deleteCar(final String plate) {
-        electricRepository.deleteById(plate);
-
+    public void deleteCar(final String plate) throws CardNotPresentException {
+            final Optional<ElectricCarEntity> car = electricRepository.findById(plate);
+            if (car.isPresent()) {
+                electricRepository.deleteById(plate);
+            } else {
+                throw new CardNotPresentException("Instance Does not Exidst");
+            }
     }
 
-    /**{@inheritDoc}
+    /**
+     * {@inheritDoc}
+     *
      * @return
      */
     @Override
@@ -148,19 +164,19 @@ public class ElectricCarServiceImpl implements ElectricCarService {
 
     }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public ElectricCar getById(String plate) throws NoCarFoundException {
-		try {
-			final Optional<ElectricCarEntity> entity = electricRepository.findById(plate);
-			final ElectricCar carDTO = new ElectricCar(entity.get().getPlate(), entity.get().getMake(), entity.get().getModel(),entity.get().getYear(),entity.get().getOdometerReading(),entity.get().getAutonomy());
-			return carDTO;
-		}catch (final NoSuchElementException ex) {
-			throw new NoCarFoundException(ex.getMessage());
-		}
-		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ElectricCar getById(String plate) throws NoCarFoundException {
+        try {
+            final Optional<ElectricCarEntity> entity = electricRepository.findById(plate);
+            final ElectricCar carDTO = new ElectricCar(entity.get().getPlate(), entity.get().getMake(), entity.get().getModel(), entity.get().getYear(), entity.get().getOdometerReading(), entity.get().getAutonomy());
+            return carDTO;
+        } catch (final NoSuchElementException ex) {
+            throw new NoCarFoundException(ex.getMessage());
+        }
+
+    }
 
 }
